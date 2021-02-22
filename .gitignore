@@ -1,3 +1,6 @@
+#Added Files
+required-instructions.txt
+
 # Numerous always-ignore extensions
 *.diff
 *.err
