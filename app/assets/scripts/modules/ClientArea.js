@@ -17,14 +17,19 @@ class ClientArea {
   }
 
   sendRequest() {
-    Axios.post('https://condescending-payne-1beaf7.netlify.app/.netlify/functions/secret-area', {password: this.field.value}).then(response => {
-      this.form.remove()
-      this.contentArea.innerHTML = response.data
-    }).catch(() => {
-      this.contentArea.innerHTML = `<p class="client-area__error">That secret phrase is not correct. Try again.</p>`
-      this.field.value = ''
-      this.field.focus()
-    })
+    let user = new FormData();
+
+    user.append("app_name", "contact_application_csc")
+    user.append('username', "mmmohajer70")
+    user.append('password', "Pass4ContactApplication")
+
+    try {
+      const response = await Axios.post("https://v1.stormapi.com/users/login", user)
+      console.log(response)
+    } catch(err) {
+      console.log(err)
+    }
+  }
   }
 
   injectHTML() {
