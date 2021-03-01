@@ -24,7 +24,7 @@ class ClientArea {
     admin.append('password', "Pass4ContactApplication")
 
     try {
-      const response = await Axios.post("/users/login", admin)
+      const response = await Axios.post("https://v1.stormapi.com/users/login", admin)
       console.log(response)
     } catch(err) {
       console.log(err)
