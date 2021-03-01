@@ -12,7 +12,7 @@ app.use('/users', createProxyMiddleware({
 )
 
 app.use('/.netlify', createProxyMiddleware({ 
-  target: 'https://condescending-payne-1beaf7.netlify.app', 
+  target: 'https://condescending-payne-1beaf7.netlify.app/', 
   changeOrigin: true 
   })
 )
