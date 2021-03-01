@@ -30,7 +30,6 @@ class ClientArea {
       console.log(err)
     }
   }
-  }
 
   injectHTML() {
     document.body.insertAdjacentHTML('beforeend', `
