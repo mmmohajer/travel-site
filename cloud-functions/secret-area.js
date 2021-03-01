@@ -9,14 +9,24 @@ exports.handler = (event, context, callback) => {
 
 	if (event.body) {
 		body = JSON.parse(event.body)
-    sendRequest()
+    handleSubmit()
 	} else {
 		body = {} 
 	}
 
-  async sendRequest() {
-    let response = await Axios.post("https://www.google.com", body);
-    console.log(response.status)
-    console.log(response) 
+  async handleSubmit() {
+
+    let user = new FormData();
+
+    user.append("app_name", "contact_application_csc")
+    user.append('username', "mmmohajer70")
+    user.append('password', "Pass4ContactApplication")
+
+    try {
+      const response = await Axios.post("https://v1.stormapi.com/users/login", user)
+      console.log(response)
+    } catch(err) {
+      console.log(err)
+    }
   }
 }
