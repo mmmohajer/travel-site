@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
 	}
 
   async sendRequest() {
-    let response = Axios.post("https://www.google.com", body);
+    let response = await Axios.post("https://www.google.com", body);
     console.log(response.status)
     console.log(response) 
   }
