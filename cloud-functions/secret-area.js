@@ -1,22 +1,22 @@
-const express = require('express')
-const path = require('path');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const Axios = require('axios')
 
-const app = express()
-const port = process.env.PORT || 3000
+exports.handler = (event, context, callback) => {
+	const secretContent = `
+	<h3>Welcome to the Secret Area</h3>
+	<p>Here we can tell you the sky color is <strong>blue</strong>.</p>
+	`
+	let body
 
-app.use('/users', createProxyMiddleware({ 
-  target: 'https://v1.stormapi.com/', 
-  changeOrigin: true 
-  })
-)
+	if (event.body) {
+		body = JSON.parse(event.body)
+    sendRequest()
+	} else {
+		body = {} 
+	}
 
-app.use('/.netlify', createProxyMiddleware({ 
-  target: 'https://test.app/', 
-  changeOrigin: true 
-  })
-)
-
-app.use(express.static(path.join(__dirname, '../app')));
-
-app.listen(port, () => console.log(`App is live on port ${port}!`))
+  async sendRequest() {
+    let response = Axios.post("https://www.google.com", body);
+    console.log(response.status)
+    console.log(response) 
+  }
+}
