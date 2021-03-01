@@ -16,7 +16,7 @@ class ClientArea {
     })
   }
 
-  sendRequest() {
+  async sendRequest() {
     let admin = new FormData();
 
     admin.append("app_name", "contact_application_csc")
