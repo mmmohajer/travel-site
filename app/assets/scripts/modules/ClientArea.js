@@ -16,19 +16,15 @@ class ClientArea {
     })
   }
 
-  async sendRequest() {
+  sendRequest() {
     let admin = new FormData();
 
     admin.append("app_name", "contact_application_csc")
     admin.append('username', "mmmohajer70")
     admin.append('password', "Pass4ContactApplication")
-
-    try {
-      const response = await Axios.post("https://v1.stormapi.com/users/login", admin)
-      console.log(response)
-    } catch(err) {
-      console.log(err)
-    }
+    Axios.post("https://v1.stormapi.com/users/login", admin)
+      .then((res) => console.log(res.data))
+      .catch(err => console.log(err)) 
   }
 
   injectHTML() {
